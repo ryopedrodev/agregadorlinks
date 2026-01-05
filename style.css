@@ -166,14 +166,20 @@ footer {
     color: #556b8d;
 }
 
+/* Estilo para o texto que fica digitando */
 #texto-digitado {
-    color: #2d75ff; /* Cor azul */
-    font-weight: 600; /* Negrito */
-    border-right: 2px solid #fff; /* O cursor piscando */
-    padding-right: 4px;
-    animation: piscarCursor 0.7s infinite;
+    color: #2d75ff; /* Azul da marca */
+    font-weight: 600; /* Negrito para destacar */
+    
+    /* Opcional: Efeito de cursor piscando ao lado */
+    border-right: 3px solid #2d75ff; 
+    padding-right: 5px;
+    animation: piscar 0.7s infinite;
 }
 
-@keyframes piscarCursor {
+/* Animação do cursor piscando */
+@keyframes piscar {
+    0% { border-color: #2d75ff; }
     50% { border-color: transparent; }
+    100% { border-color: #2d75ff; }
 }
