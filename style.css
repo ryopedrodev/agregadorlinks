@@ -1,0 +1,167 @@
+/* Importação da Fonte Outfit */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+html {
+    height: 100%;
+    font-size: 14px;
+}
+
+body {
+    /* Fundo com iluminação central */
+    background: radial-gradient(circle at center, #14233f 0%, #0b162a 100%);
+    background-attachment: fixed; /* Impede o fundo de rolar em celulares pequenos */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    color: #fff;
+}
+
+/* --- HEADER --- */ 
+header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+header img {
+    /* TAMANHO DA LOGO AUMENTADO */
+    width: 180px;
+    height: 180px;
+    
+    object-fit: cover; /* Garante que a imagem não distorça */
+    margin-bottom: 25px;
+    border-radius: 50%; /* Deixa redonda */
+    
+    /* Borda azul clara para destacar do fundo escuro */
+    border: 4px solid #2d75ff; 
+    padding: 4px; /* Espaço entre a foto e a borda */
+}
+
+header h1 {
+    font-size: 1.8em;
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+header p {
+    color: #a0b3d1; /* Azul acinzentado claro */
+    font-weight: 300;
+    font-size: 1.1em;
+}
+
+/* --- BOTÕES (LINKS) --- */
+.botoes-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.link-botao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Fundo do botão levemente mais claro que o fundo da página */
+    background-color: #14233f; 
+    color: #fff;
+    text-decoration: none;
+    padding: 18px 24px;
+    border-radius: 12px;
+    border: 1px solid #1f365c;
+    transition: all 0.3s ease;
+    font-weight: 400;
+}
+
+/* Ícones com a cor vibrante da marca */
+.link-botao i {
+    font-size: 1.4rem;
+    color: #2d75ff; 
+    transition: 0.3s;
+}
+
+/* Efeito Hover (Ao passar o mouse) */
+.link-botao:hover {
+    background-color: #2d75ff; /* Botão fica azul vibrante */
+    border-color: #2d75ff;
+    transform: translateY(-4px); /* Sobe um pouco */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Ao passar o mouse, o ícone fica branco */
+.link-botao:hover i {
+    color: #ffffff;
+}
+
+/* --- FOOTER --- */
+footer {
+    margin-top: 45px;
+    text-align: center;
+}
+
+.btn-footer {
+    font-size: 1.8rem;
+    color: #3b5a8a;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-footer:hover {
+    color: #2d75ff; /* Brilha azul ao passar o mouse */
+}
+
+/* Animação de pulso */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(45, 117, 255, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(45, 117, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(45, 117, 255, 0); }
+}
+
+/* Classe para destacar o botão principal */
+.destaque {
+    border-color: #2d75ff;
+    background-color: rgba(45, 117, 255, 0.1); /* Fundo azulzinho bem suave */
+    font-weight: 600;
+    animation: pulse 2s infinite;
+}
+
+/* Animação de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    /* ... suas outras configurações ... */
+    animation: fadeInUp 0.8s ease-out; /* Aplica a animação */
+}
+
+.copyright {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #556b8d;
+}
