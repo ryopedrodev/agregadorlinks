@@ -9,29 +9,33 @@
 }
 
 html {
-    height: 100%;
+    /* Removemos o height fixo para evitar bugs de scroll */
     font-size: 14px;
 }
 
 body {
-    /* Fundo com iluminação central */
     background: radial-gradient(circle at center, #14233f 0%, #0b162a 100%);
-    background-attachment: fixed; /* Impede o fundo de rolar em celulares pequenos */
-    height: 100%;
+    background-attachment: fixed; 
+    /* MUDANÇA CRÍTICA: min-height garante que o fundo cubra tudo, mas deixa rolar se precisar */
+    min-height: 100vh;
     display: flex;
     justify-content: center;
+    /* align-items: center; -> Opcional: removemos para evitar corte em telas muito pequenas */
+    overflow-x: hidden;
 }
 
 .container {
     width: 100%;
-    height: 100%;
+    /* MUDANÇA CRÍTICA: min-height permite que o container cresça se o conteúdo for grande */
+    min-height: 100vh; 
     max-width: 550px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 20px;
+    justify-content: center; /* Centraliza verticalmente se sobrar espaço */
+    padding: 40px 20px; /* Mais espaço em cima e embaixo para não colar nas bordas */
     color: #fff;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 /* --- HEADER --- */ 
@@ -40,18 +44,36 @@ header {
     margin-bottom: 35px;
 }
 
-header img {
-    /* TAMANHO DA LOGO AUMENTADO */
+/* --- NOVO CÓDIGO DO ZOOM --- */
+/* A moldura redonda */
+.foto-perfil {
     width: 180px;
     height: 180px;
+    margin: 0 auto 25px auto;
     
-    object-fit: cover; /* Garante que a imagem não distorça */
-    margin-bottom: 25px;
-    border-radius: 50%; /* Deixa redonda */
-    
-    /* Borda azul clara para destacar do fundo escuro */
+    border-radius: 50%;
     border: 4px solid #2d75ff; 
-    padding: 4px; /* Espaço entre a foto e a borda */
+    padding: 4px; 
+    background-color: transparent; 
+    
+    /* Corta o zoom que vazar */
+    overflow: hidden; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* A imagem com Zoom */
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    
+    /* APLICA O ZOOM DE 40% */
+    transform: scale(1.4); 
+    transform-origin: center;
 }
 
 header h1 {
@@ -63,12 +85,12 @@ header h1 {
 }
 
 header p {
-    color: #a0b3d1; /* Azul acinzentado claro */
+    color: #a0b3d1;
     font-weight: 300;
     font-size: 1.1em;
 }
 
-/* --- BOTÕES (LINKS) --- */
+/* --- BOTÕES --- */
 .botoes-links {
     display: flex;
     flex-direction: column;
@@ -80,7 +102,6 @@ header p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Fundo do botão levemente mais claro que o fundo da página */
     background-color: #14233f; 
     color: #fff;
     text-decoration: none;
@@ -91,22 +112,19 @@ header p {
     font-weight: 400;
 }
 
-/* Ícones com a cor vibrante da marca */
 .link-botao i {
     font-size: 1.4rem;
     color: #2d75ff; 
     transition: 0.3s;
 }
 
-/* Efeito Hover (Ao passar o mouse) */
 .link-botao:hover {
-    background-color: #2d75ff; /* Botão fica azul vibrante */
+    background-color: #2d75ff;
     border-color: #2d75ff;
-    transform: translateY(-4px); /* Sobe um pouco */
+    transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Ao passar o mouse, o ícone fica branco */
 .link-botao:hover i {
     color: #ffffff;
 }
@@ -115,6 +133,7 @@ header p {
 footer {
     margin-top: 45px;
     text-align: center;
+    padding-bottom: 20px; /* Segurança para celulares com barra de gesto */
 }
 
 .btn-footer {
@@ -124,41 +143,7 @@ footer {
     transition: 0.3s;
 }
 
-.btn-footer:hover {
-    color: #2d75ff; /* Brilha azul ao passar o mouse */
-}
-
-/* Animação de pulso */
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(45, 117, 255, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(45, 117, 255, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(45, 117, 255, 0); }
-}
-
-/* Classe para destacar o botão principal */
-.destaque {
-    border-color: #2d75ff;
-    background-color: rgba(45, 117, 255, 0.1); /* Fundo azulzinho bem suave */
-    font-weight: 600;
-    animation: pulse 2s infinite;
-}
-
-/* Animação de entrada */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.container {
-    /* ... suas outras configurações ... */
-    animation: fadeInUp 0.8s ease-out; /* Aplica a animação */
-}
+.btn-footer:hover { color: #2d75ff; }
 
 .copyright {
     margin-top: 15px;
@@ -166,22 +151,41 @@ footer {
     color: #556b8d;
 }
 
-/* Estilo para o texto que fica digitando */
+/* --- ANIMAÇÕES E EXTRAS --- */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(45, 117, 255, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(45, 117, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(45, 117, 255, 0); }
+}
+
+.destaque {
+    border-color: #2d75ff;
+    background-color: rgba(45, 117, 255, 0.1);
+    font-weight: 600;
+    animation: pulse 2s infinite;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Status e Digitação */
 #texto-digitado {
-    color: #2d75ff; /* Azul da marca */
-    font-weight: 600; /* Negrito para destacar */
-    
-    /* Opcional: Efeito de cursor piscando ao lado */
+    color: #2d75ff;
+    font-weight: 600;
     border-right: 3px solid #2d75ff; 
     padding-right: 5px;
     animation: piscar 0.7s infinite;
 }
 
-/* Animação do cursor piscando */
 @keyframes piscar {
-    0% { border-color: #2d75ff; }
+    0%, 100% { border-color: #2d75ff; }
     50% { border-color: transparent; }
-    100% { border-color: #2d75ff; }
 }
 
 .status-badge {
@@ -200,37 +204,29 @@ footer {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #ccc; /* Cor padrão */
+    background-color: #ccc;
     box-shadow: 0 0 8px rgba(255,255,255,0.2);
 }
 
-/* Cores dinâmicas */
 .aberto .status-bolinha { background-color: #00ff88; box-shadow: 0 0 8px #00ff88; }
 .fechado .status-bolinha { background-color: #ff4d4d; box-shadow: 0 0 8px #ff4d4d; }
 
-/* Impede que o usuário arraste as imagens (fica parecendo App nativo) */
-img {
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-}
-
-/* Quando o usuário seleciona um texto, a cor de fundo é o azul da marca */
-::selection {
-    background: #2d75ff;
-    color: #fff;
-}
-
-/* Animação para a bolinha verde piscar */
 @keyframes pulse-green {
     0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
     70% { box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
     100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
 }
 
-/* Aplica apenas quando estiver com a classe .aberto */
 .aberto .status-bolinha {
     animation: pulse-green 2s infinite;
+}
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+::selection {
+    background: #2d75ff;
+    color: #fff;
 }
