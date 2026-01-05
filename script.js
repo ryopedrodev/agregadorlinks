@@ -1,5 +1,5 @@
 // As frases que vão alternar
-const frases = ["profissionais da saúde", "academias", "comércio", "construção civil", "prestadores de serviços"];
+const frases = ["profissionais da saúde", "academias", "comércios", "construção civil", "prestadores de serviços"];
 
 let i = 0; // Índice da frase atual
 let j = 0; // Índice da letra atual
