@@ -53,7 +53,7 @@ function verificarHorario() {
     if (ehDiaUtil && ehHorarioComercial) {
         elementoStatus.classList.add("aberto");
         elementoStatus.classList.remove("fechado");
-        textoStatus.innerText = "Aberto agora • Resposta rápida";
+        textoStatus.innerText = "Aberto agora";
     } else {
         elementoStatus.classList.add("fechado");
         elementoStatus.classList.remove("aberto");
