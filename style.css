@@ -222,3 +222,15 @@ img {
     background: #2d75ff;
     color: #fff;
 }
+
+/* Animação para a bolinha verde piscar */
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+}
+
+/* Aplica apenas quando estiver com a classe .aberto */
+.aberto .status-bolinha {
+    animation: pulse-green 2s infinite;
+}

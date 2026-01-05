@@ -63,3 +63,6 @@ function verificarHorario() {
 
 // Roda a função assim que carrega
 verificarHorario();
+
+// Pega o ano atual do sistema automaticamente
+document.getElementById("ano-atual").innerText = new Date().getFullYear();
