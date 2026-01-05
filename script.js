@@ -66,3 +66,9 @@ verificarHorario();
 
 // Pega o ano atual do sistema automaticamente
 document.getElementById("ano-atual").innerText = new Date().getFullYear();
+
+/* ATUALIZA O ANO DO RODAPÉ AUTOMATICAMENTE */
+const anoElement = document.getElementById("ano-atual");
+if (anoElement) {
+    anoElement.innerText = new Date().getFullYear();
+}
