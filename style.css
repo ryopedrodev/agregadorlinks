@@ -183,3 +183,42 @@ footer {
     50% { border-color: transparent; }
     100% { border-color: #2d75ff; }
 }
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-bolinha {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ccc; /* Cor padrão */
+    box-shadow: 0 0 8px rgba(255,255,255,0.2);
+}
+
+/* Cores dinâmicas */
+.aberto .status-bolinha { background-color: #00ff88; box-shadow: 0 0 8px #00ff88; }
+.fechado .status-bolinha { background-color: #ff4d4d; box-shadow: 0 0 8px #ff4d4d; }
+
+/* Impede que o usuário arraste as imagens (fica parecendo App nativo) */
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Quando o usuário seleciona um texto, a cor de fundo é o azul da marca */
+::selection {
+    background: #2d75ff;
+    color: #fff;
+}

@@ -37,3 +37,29 @@ function digitar() {
 
 // Inicia o efeito
 digitar();
+
+function verificarHorario() {
+    const data = new Date();
+    const hora = data.getHours();
+    const dia = data.getDay(); // 0 = Domingo, 6 = Sábado
+
+    const elementoStatus = document.getElementById("status-loja");
+    const textoStatus = document.getElementById("texto-status");
+
+    // Lógica: Aberto de Seg (1) a Sex (5), das 09h às 17h
+    const ehDiaUtil = dia >= 1 && dia <= 5;
+    const ehHorarioComercial = hora >= 9 && hora < 17;
+
+    if (ehDiaUtil && ehHorarioComercial) {
+        elementoStatus.classList.add("aberto");
+        elementoStatus.classList.remove("fechado");
+        textoStatus.innerText = "Aberto agora • Resposta rápida";
+    } else {
+        elementoStatus.classList.add("fechado");
+        elementoStatus.classList.remove("aberto");
+        textoStatus.innerText = "Fechado agora • Atendimento às 08h";
+    }
+}
+
+// Roda a função assim que carrega
+verificarHorario();
