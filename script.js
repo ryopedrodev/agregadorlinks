@@ -57,7 +57,7 @@ function verificarHorario() {
     } else {
         elementoStatus.classList.add("fechado");
         elementoStatus.classList.remove("aberto");
-        textoStatus.innerText = "Fechado agora • Atendimento às 08h";
+        textoStatus.innerText = "Fechado agora • Atendimento às 09h";
     }
 }
 
