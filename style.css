@@ -1,4 +1,3 @@
-/* Importação da Fonte Outfit */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
 
 * {
@@ -9,43 +8,35 @@
 }
 
 html {
-    /* Removemos o height fixo para evitar bugs de scroll */
     font-size: 14px;
 }
 
 body {
     background: radial-gradient(circle at center, #14233f 0%, #0b162a 100%);
     background-attachment: fixed; 
-    /* MUDANÇA CRÍTICA: min-height garante que o fundo cubra tudo, mas deixa rolar se precisar */
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    /* align-items: center; -> Opcional: removemos para evitar corte em telas muito pequenas */
     overflow-x: hidden;
 }
 
 .container {
     width: 100%;
-    /* MUDANÇA CRÍTICA: min-height permite que o container cresça se o conteúdo for grande */
     min-height: 100vh; 
     max-width: 550px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente se sobrar espaço */
-    padding: 40px 20px; /* Mais espaço em cima e embaixo para não colar nas bordas */
+    justify-content: center; 
+    padding: 40px 20px; 
     color: #fff;
     animation: fadeInUp 0.8s ease-out;
 }
 
-/* --- HEADER --- */ 
 header {
     text-align: center;
     margin-bottom: 35px;
 }
-
-/* --- NOVO CÓDIGO DO ZOOM --- */
-/* A moldura redonda */
 .foto-perfil {
     width: 180px;
     height: 180px;
@@ -56,7 +47,6 @@ header {
     padding: 4px; 
     background-color: transparent; 
     
-    /* Corta o zoom que vazar */
     overflow: hidden; 
     
     display: flex;
@@ -64,14 +54,12 @@ header {
     align-items: center;
 }
 
-/* A imagem com Zoom */
 .foto-perfil img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
     
-    /* APLICA O ZOOM DE 40% */
     transform: scale(1.4); 
     transform-origin: center;
 }
@@ -90,7 +78,6 @@ header p {
     font-size: 1.1em;
 }
 
-/* --- BOTÕES --- */
 .botoes-links {
     display: flex;
     flex-direction: column;
@@ -129,11 +116,11 @@ header p {
     color: #ffffff;
 }
 
-/* --- FOOTER --- */
+
 footer {
     margin-top: 45px;
     text-align: center;
-    padding-bottom: 20px; /* Segurança para celulares com barra de gesto */
+    padding-bottom: 20px;
 }
 
 .btn-footer {
@@ -151,7 +138,6 @@ footer {
     color: #556b8d;
 }
 
-/* --- ANIMAÇÕES E EXTRAS --- */
 @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(45, 117, 255, 0.4); }
     70% { box-shadow: 0 0 0 10px rgba(45, 117, 255, 0); }
@@ -173,8 +159,6 @@ footer {
 .container {
     animation: fadeInUp 0.8s ease-out;
 }
-
-/* Status e Digitação */
 #texto-digitado {
     color: #2d75ff;
     font-weight: 600;
